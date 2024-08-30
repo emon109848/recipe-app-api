@@ -1,0 +1,40 @@
+#0 building with "default" instance using docker driver
+
+#1 [app internal] load build definition from Dockerfile
+#1 transferring dockerfile: 32B done
+#1 DONE 0.0s
+
+#2 [app internal] load .dockerignore
+#2 transferring context: 35B done
+#2 DONE 0.0s
+
+#3 [app internal] load metadata for docker.io/library/python:3.9-alpine3.13
+#3 DONE 0.0s
+
+#4 [app 1/6] FROM docker.io/library/python:3.9-alpine3.13
+#4 DONE 0.0s
+
+#5 [app internal] load build context
+#5 transferring context: 471B done
+#5 DONE 0.0s
+
+#6 [app 5/6] WORKDIR /app
+#6 CACHED
+
+#7 [app 2/6] COPY ./requirements.txt /tmp/requirements.txt
+#7 CACHED
+
+#8 [app 3/6] COPY ./requirements.dev.txt /tmp/requirements.dev.txt
+#8 CACHED
+
+#9 [app 4/6] COPY ./app /app
+#9 CACHED
+
+#10 [app 6/6] RUN python -m venv /py &&     /py/bin/pip install --upgrade pip &&     apk add --update --no-cache postgresql-client &&     apk add --update --no-cache --virtual .tmp-build-deps         build-base postgresql-dev musl-dev &&     /py/bin/pip install -r /tmp/requirements.txt &&     if [ true = "true" ]; then        /py/bin/pip install -r /tmp/requirements.dev.txt;     fi &&     rm -rf /tmp &&     apk del .tmp-build-deps &&     adduser         --disabled-password         --no-create-home         django-user
+#10 CACHED
+
+#11 [app] exporting to image
+#11 exporting layers done
+#11 writing image sha256:77ab5a5ff99251e6dcdda65823854ad8f030cc34dd5ff9f6cee1fbcb15758e13 done
+#11 naming to docker.io/library/recipe-app-api-app done
+#11 DONE 0.0s
